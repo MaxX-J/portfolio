@@ -227,19 +227,23 @@
         function moveCarousel(direction, btn) {
             const carousel = btn.closest('.carousel');
             const inner = carousel.querySelector('.carousel-inner');
-            
-            let index = Math.round(inner.scrollLeft / inner.clientWidth);
-            index += direction;
-            
+            const isMobile = window.innerWidth <= 768;
             const totalItems = inner.querySelectorAll('img').length;
-            if(index >= totalItems) index = 0;
-            if(index < 0) index = totalItems - 1;
             
-            // smooth scroll to new index
-            inner.scrollTo({
-                left: index * inner.clientWidth,
-                behavior: 'smooth'
-            });
+            if (isMobile) {
+                let index = Math.round(inner.scrollLeft / inner.clientWidth);
+                index += direction;
+                if(index >= totalItems) index = 0;
+                if(index < 0) index = totalItems - 1;
+                inner.scrollTo({ left: index * inner.clientWidth, behavior: 'smooth' });
+            } else {
+                let index = parseInt(carousel.dataset.index || '0');
+                index += direction;
+                if(index >= totalItems) index = 0;
+                if(index < 0) index = totalItems - 1;
+                carousel.dataset.index = index;
+                inner.style.transform = `translateX(-${index * 100}%)`;
+            }
         }
     </script>
 </body>

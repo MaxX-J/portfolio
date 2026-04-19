@@ -777,6 +777,11 @@ body {
     }
 
     /* Cards */
+    .card {
+        position: relative;
+        min-height: auto;
+    }
+
     .card-inner {
         padding: 5rem 1.5rem 2rem;
     }

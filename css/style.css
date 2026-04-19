@@ -40,6 +40,7 @@ html, body {
     position: relative;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
@@ -374,6 +375,7 @@ body {
     line-height: 1;
     overflow-wrap: break-word;
     word-break: break-word;
+    max-width: 100%;
 }
 
 .projects-bento {
@@ -765,11 +767,12 @@ body {
 
     .navbar {
         top: 0.8rem;
-        left: 50%;
+        left: 1rem;
         right: auto;
-        transform: translateX(-50%);
-        padding: 0.5rem 1.2rem;
-        width: max-content;
+        transform: none;
+        padding: 0.6rem 1.2rem;
+        width: auto;
+        display: inline-flex;
     }
 
     .nav-links {
@@ -805,11 +808,13 @@ body {
         top: auto !important;
         min-height: max-content !important;
         display: block !important;
-        overflow: visible !important;
+        overflow: hidden !important;
     }
 
     .card-inner {
         padding: 5rem 1.5rem 2rem;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .card-number {
@@ -821,7 +826,9 @@ body {
     }
 
     .section-heading {
-        font-size: clamp(1.4rem, 8vw, 3rem);
+        font-size: clamp(1.2rem, 7vw, 2.5rem);
+        letter-spacing: -0.02em;
+        max-width: calc(100vw - 3rem);
     }
 
     /* Projects */

@@ -742,8 +742,12 @@ body {
 
     /* Le body prend la couleur de la card-1 pour que la navbar
        s'intègre visuellement dans la première section */
+    html {
+        background: var(--purple-4); /* couleur dernière card — fix iOS overscroll bas */
+    }
+
     body {
-        background: var(--purple-1);
+        background: var(--purple-1); /* couleur card-1 pour la navbar */
     }
 
     /* Nav mobile — en haut de page, disparaît au scroll */

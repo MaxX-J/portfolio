@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Sevilla Maxens — Étudiant MMI spécialité développement.">
+    <title>Sevilla Maxens | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ============ NAVBAR ============ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#accueil" class="nav-logo">Maxens<span class="dot">.</span></a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil" class="nav-link active" data-section="accueil">Accueil</a></li>
+                <li><a href="#projets" class="nav-link" data-section="projets">Projets</a></li>
+                <li><a href="#competences" class="nav-link" data-section="competences">Compétences</a></li>
+                <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ============ CV BUTTON ============ -->
+    <a href="cv-maxens-sevilla.pdf" class="cv-button" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
+
+    <!-- ============ CARD 1 — ACCUEIL (Apricot) ============ -->
+    <section class="card card-1" id="accueil">
+        <div class="card-inner">
+            <div class="card-content">
+                <p class="card-label">Portfolio 2026</p>
+                <h1 class="hero-title">
+                    <span class="line">Sevilla</span>
+                    <span class="line">Maxens<span class="dot-accent">.</span></span>
+                </h1>
+                <div class="hero-subtitle">
+                    <span class="typing-prefix">Je suis </span>
+                    <span class="typing-text" id="typedText"></span>
+                    <span class="cursor">|</span>
+                </div>
+                <p class="hero-desc">Étudiant en 2ème année MMI, passionné par le développement web et la création
+                    d'expériences numériques uniques.</p>
+                <div class="hero-actions">
+                    <a href="#projets" class="btn btn-dark">Voir mes projets ↓</a>
+                    <a href="#contact" class="btn btn-ghost">Me contacter</a>
+                </div>
+            </div>
+            <div class="card-number">01</div>
+        </div>
+    </section>
+
+    <!-- ============ CARD 2 — PROJETS (Chartreuse) ============ -->
+    <section class="card card-2" id="projets">
+        <div class="card-inner">
+            <div class="card-content">
+                <p class="card-label">Mes réalisations</p>
+                <h2 class="section-heading">Projets<span class="dot-accent">.</span></h2>
+                <div class="projects-bento">
+                    <article class="project-tile project-large">
+                        <div class="project-img"></div>
+                        <div class="project-meta">
+                            <h3>Projet Alpha</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+                                incididunt.</p>
+                            <div class="tags">
+                                <span>HTML</span><span>CSS</span><span>JS</span>
+                            </div>
+                        </div>
+                    </article>
+                    <a href="projet-trench.html" class="project-tile" style="text-decoration: none; color: inherit;">
+                        <div class="project-img"
+                            style="background-image: url('Trench_hero_2.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-meta">
+                            <h3>Trench Hero</h3>
+                            <p>Développement du jeu Trench Hero.</p>
+                            <div class="tags">
+                                <span>Phaser</span><span>Tiled</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="projet-beziers.html" class="project-tile" style="text-decoration: none; color: inherit;">
+                        <div class="project-img"
+                            style="background-image: url('Affiche_béziers.jpg'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-meta">
+                            <h3>Béziers en 2025</h3>
+                            <p>Affiche exposée à la Mairie de Béziers saluée par R. Ménard.</p>
+                            <div class="tags">
+                                <span>Design Média</span><span>Communication</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="projet-film.html" class="project-tile project-wide"
+                        style="text-decoration: none; color: inherit;">
+                        <div class="project-img"
+                            style="background-image: url('je_film_ma_formation.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-meta">
+                            <h3>Je filme ma formation</h3>
+                            <p>Projet de réalisation vidéo pour présenter ma formation.</p>
+                            <div class="tags">
+                                <span>Vidéo</span><span>Équipe</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="projet-spotify.html" class="project-tile" style="text-decoration: none; color: inherit;">
+                        <div class="project-img"
+                            style="background-image: url('site_spotifystats_2.png'); background-size: cover; background-position: center;">
+                        </div>
+                        <div class="project-meta">
+                            <h3>Spotify Stats</h3>
+                            <p>Interface web d'analyse de données Spotify.</p>
+                            <div class="tags">
+                                <span>JavaScript</span><span>Bootstrap</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="card-number">02</div>
+        </div>
+    </section>
+
+    <!-- ============ CARD 3 — COMPÉTENCES (Vista Blue) ============ -->
+    <section class="card card-3" id="competences">
+        <div class="card-inner">
+            <div class="card-content">
+                <p class="card-label">Ce que je maîtrise</p>
+                <h2 class="section-heading">Compétences<span class="dot-accent">.</span></h2>
+                <div class="skills-columns">
+                    <div class="skills-col">
+                        <h3 class="skills-col-title">Hard Skills</h3>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">HTML5</span>
+                                <span class="skill-tag tag-solid">Maîtrisé</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">CSS3</span>
+                                <span class="skill-tag tag-solid">Maîtrisé</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">PHP</span>
+                                <span class="skill-tag tag-solid">Maîtrisé</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-tag tag-mid">Intermédiaire</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-tag tag-mid">Intermédiaire</span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Node.js</span>
+                                <span class="skill-tag tag-new">En cours</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-col">
+                        <h3 class="skills-col-title">Soft Skills</h3>
+                        <div class="soft-skill">
+                            <span class="soft-icon"></span>
+                            <div>
+                                <strong>Autonome</strong>
+                                <p>Capable de mener un projet de A à Z en toute indépendance.</p>
+                            </div>
+                        </div>
+                        <div class="soft-skill">
+                            <span class="soft-icon"></span>
+                            <div>
+                                <strong>Curieux</strong>
+                                <p>Toujours en veille sur les dernières technos et tendances.</p>
+                            </div>
+                        </div>
+                        <div class="soft-skill">
+                            <span class="soft-icon"></span>
+                            <div>
+                                <strong>Adaptable</strong>
+                                <p>À l'aise dans de nouveaux environnements et avec de nouveaux outils.</p>
+                            </div>
+                        </div>
+                        <div class="soft-skill">
+                            <span class="soft-icon"></span>
+                            <div>
+                                <strong>Esprit d'équipe</strong>
+                                <p>Habitué au travail collaboratif et aux projets de groupe.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-number">03</div>
+            </div>
+    </section>
+
+    <!-- ============ CARD 4 — CONTACT (Tomato) ============ -->
+    <section class="card card-4" id="contact">
+        <div class="card-inner">
+            <div class="card-content">
+                <p class="card-label">Discutons ensemble</p>
+                <h2 class="section-heading">Contact<span class="dot-accent">.</span></h2>
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <p class="contact-big-text">Un projet ? Une idée ? Envoyez-moi un message, je vous répondrai
+                            rapidement.</p>
+                        <div class="contact-links">
+                            <a href="mailto:sevilla.maxens@gmail.com" class="contact-link-item">
+                                <span class="contact-link-icon">✉</span>
+                                <span>sevilla.maxens@gmail.com</span>
+                            </a>
+                            <a href="https://www.linkedin.com/in/maxens-sevilla/" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                                <span class="contact-link-icon">in</span>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/MaxX-J" target="_blank" rel="noopener noreferrer" class="contact-link-item">
+                                <span class="contact-link-icon">gh</span>
+                                <span>GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm" action="mailto:sevilla.maxens@gmail.com" method="POST" enctype="text/plain">
+                        <div class="form-field">
+                            <input type="text" id="name" name="name" required placeholder="Votre nom">
+                        </div>
+                        <div class="form-field">
+                            <input type="email" id="email" name="email" required placeholder="Votre email">
+                        </div>
+                        <div class="form-field">
+                            <textarea id="message" name="message" rows="4" required
+                                placeholder="Votre message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-send">
+                            Envoyer →
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-number">04</div>
+            <footer class="footer">
+                <span>Conçu & développé par Maxens — 2026</span>
+            </footer>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

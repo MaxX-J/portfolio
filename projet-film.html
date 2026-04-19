@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Je Filme Ma Formation | Maxens Sevilla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: var(--purple-4);
+            min-height: 100vh;
+        }
+        .project-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            color: var(--white);
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s var(--ease);
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        .project-header {
+            margin-bottom: 3rem;
+        }
+        .project-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .project-meta-info {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        .project-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .project-text {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .project-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        .project-text p:last-child {
+            margin-bottom: 0;
+        }
+        .project-image video {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .project-page {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar" style="backdrop-filter: blur(20px);">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Maxens<span class="dot" style="color: var(--purple-1);">.</span></a>
+        </div>
+    </nav>
+    <a href="cv-maxens-sevilla.pdf" class="cv-button" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
+
+    <main class="project-page">
+        <a href="index.html#projets" class="back-btn">← Retour aux projets</a>
+        
+        <div class="project-header">
+            <h1 class="project-title">Je filme ma formation</h1>
+            <div class="project-meta-info">
+                <span>Vidéographie</span>
+                <span>Travail d'équipe</span>
+            </div>
+        </div>
+
+        <div class="project-body">
+            <div class="project-text">
+                <p>Dans le cadre du concours national <strong>« Je filme ma formation »</strong>, nous avons réalisé une vidéo de présentation de la formation MMI, en groupe de quatre.</p>
+                <p>L’objectif était de faire découvrir notre filière de façon claire, dynamique et accessible, en valorisant les différentes compétences que nous y développons.</p>
+                <p>Notre travail a été sélectionné pour la cérémonie officielle au <strong>Grand Rex à Paris</strong>, un bel accomplissement qui a mis en valeur notre investissement.</p>
+                <p>Même si nous n’avons pas remporté de prix, cette expérience m’a permis de travailler en équipe sur un projet vidéo complet : écriture du scénario, tournage, montage, gestion du rythme et de la narration.</p>
+            </div>
+            
+            <div class="project-image">
+                <video src="je_film_ma_formation.mp4" controls autoplay muted loop playsinline></video>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

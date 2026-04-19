@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Stats | Maxens Sevilla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: var(--purple-4);
+            min-height: 100vh;
+        }
+        .project-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            color: var(--white);
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s var(--ease);
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        .project-header {
+            margin-bottom: 3rem;
+        }
+        .project-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .project-meta-info {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        .project-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .project-text {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .project-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        .project-text p:last-child {
+            margin-bottom: 0;
+        }
+        .carousel {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.2);
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            width: 100%;
+        }
+        .carousel-inner img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: auto;
+            max-height: 80vh; /* Prevents extremely tall images from taking up too much vertical space */
+            object-fit: contain;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            z-index: 10;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            padding: 0;
+            line-height: 1;
+        }
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--purple-4);
+        }
+        .carousel-btn.prev { left: 1rem; }
+        .carousel-btn.next { right: 1rem; }
+        @media (max-width: 768px) {
+            .project-page {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar" style="backdrop-filter: blur(20px);">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Maxens<span class="dot" style="color: var(--purple-1);">.</span></a>
+        </div>
+    </nav>
+    <a href="cv-maxens-sevilla.pdf" class="cv-button" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
+
+    <main class="project-page">
+        <a href="index.html#projets" class="back-btn">← Retour aux projets</a>
+        
+        <div class="project-header">
+            <h1 class="project-title">Spotify Stats</h1>
+            <div class="project-meta-info">
+                <span>Développement Web</span>
+                <span>JavaScript & API</span>
+            </div>
+        </div>
+
+        <div class="project-body">
+            <div class="project-text">
+                <p>Dans le cadre de ma première année de formation, j’ai réalisé un site web interactif à partir de mes données personnelles <strong>Spotify</strong>.</p>
+                <p>Ce projet m’a permis de manipuler des données réelles et de les intégrer dans une interface dynamique.</p>
+                <p>J’ai utilisé <strong>JavaScript</strong> pour gérer l’affichage des contenus, notamment via des modales (pop-ups) que j’ai conçues en découvrant Bootstrap, un framework que j’ai appris à utiliser au fil du projet.</p>
+                <p>Cette expérience m’a permis de mieux comprendre le fonctionnement du DOM, la structure responsive, et l’importance d’une navigation claire.</p>
+            </div>
+            
+            <div class="carousel" data-index="0">
+                <div class="carousel-inner">
+                    <img src="site_spotifystats_1.png" alt="Spotify Stats Focus">
+                    <img src="site_spotifystats_2.png" alt="Spotify Stats Interface">
+                    <img src="site_spotifystats_3.png" alt="Spotify Stats Popups">
+                    <img src="site_spotifystats_4.png" alt="Spotify Stats Responsive">
+                </div>
+                <button class="carousel-btn prev" onclick="moveCarousel(-1, this)">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveCarousel(1, this)">&#10095;</button>
+            </div>
+        </div>
+    </main>
+    <script>
+        function moveCarousel(direction, btn) {
+            const carousel = btn.closest('.carousel');
+            const inner = carousel.querySelector('.carousel-inner');
+            const totalItems = inner.querySelectorAll('img').length;
+            
+            let currentIndex = parseInt(carousel.dataset.index || '0');
+            currentIndex += direction;
+            
+            if(currentIndex >= totalItems) currentIndex = 0;
+            if(currentIndex < 0) currentIndex = totalItems - 1;
+            
+            carousel.dataset.index = currentIndex;
+            inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+    </script>
+</body>
+</html>

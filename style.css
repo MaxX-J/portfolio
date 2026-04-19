@@ -1,0 +1,857 @@
+/* ========================================
+   PORTFOLIO — Card Stacking Effect
+   ======================================== */
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Palette */
+    --purple-1: #9D4EDD;
+    --purple-2: #7B2CBF;
+    --purple-3: #5A189A;
+    --purple-4: #3C096C;
+
+    /* Text */
+    --black: #111111;
+    --dark: #1a1a1a;
+    --white: #fafafa;
+
+    /* Radii */
+    --radius: 16px;
+    --radius-sm: 10px;
+    --radius-pill: 100px;
+
+    /* Transitions */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: var(--black);
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--purple-4);
+    color: white;
+}
+
+/* ========================================
+   NAVBAR — Floating pill
+   ======================================== */
+.navbar {
+    position: fixed;
+    top: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s var(--ease);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.nav-logo .dot {
+    color: var(--purple-4);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 0.45rem 1rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.3s var(--ease);
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: var(--white);
+}
+
+.nav-link.active {
+    color: var(--purple-4);
+    background: var(--white);
+}
+
+/* Mobile toggle */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.nav-toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s var(--ease);
+    border-radius: 2px;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+/* ========================================
+   CV BUTTON
+   ======================================== */
+.cv-button {
+    position: fixed;
+    top: 1.2rem;
+    right: 1.2rem;
+    z-index: 1000;
+    background: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    transition: all 0.4s var(--ease);
+}
+
+.cv-button:hover {
+    background: var(--white);
+    color: var(--purple-4);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   CARDS — Sticky Stacking
+   ======================================== */
+.card {
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    border-radius: var(--radius) var(--radius) 0 0;
+    overflow: hidden;
+    box-shadow: 0 -10px 60px rgba(0, 0, 0, 0.15);
+}
+
+.card-1 {
+    background: var(--purple-1);
+    z-index: 1;
+}
+
+.card-2 {
+    background: var(--purple-2);
+    z-index: 2;
+}
+
+.card-3 {
+    background: var(--purple-3);
+    z-index: 3;
+}
+
+.card-4 {
+    background: var(--purple-4);
+    z-index: 4;
+}
+
+.card-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Card number watermark */
+.card-number {
+    position: absolute;
+    bottom: 5rem;
+    right: -20rem;
+    z-index: 10;
+    font-family: 'Syne', sans-serif;
+    font-size: 10rem;
+    font-weight: 800;
+    opacity: 0.15;
+    line-height: 0.8;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Section label */
+.card-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+    opacity: 0.6;
+}
+
+/* ========================================
+   CARD 1 — HERO
+   ======================================== */
+.hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.5rem;
+}
+
+.hero-title .line {
+    display: block;
+}
+
+.dot-accent {
+    color: var(--purple-4);
+}
+
+.card-4 .dot-accent {
+    color: var(--purple-1);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+.typing-prefix {
+    opacity: 0.5;
+}
+
+.typing-text {
+    font-weight: 700;
+}
+
+.cursor {
+    color: var(--purple-4);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.hero-desc {
+    max-width: 500px;
+    font-size: 1.05rem;
+    opacity: 0.7;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.4s var(--ease);
+    border: none;
+    font-family: inherit;
+}
+
+.btn-dark {
+    background: var(--white);
+    color: var(--purple-4);
+}
+
+.btn-dark:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-ghost:hover {
+    border-color: var(--white);
+    transform: translateY(-3px);
+}
+
+/* ========================================
+   CARD 2 — PROJECTS (Bento)
+   ======================================== */
+.section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    line-height: 1;
+}
+
+.projects-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 220px;
+    gap: 1rem;
+}
+
+.project-tile {
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s var(--ease);
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.project-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.project-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.project-wide {
+    grid-column: span 2;
+}
+
+.project-img {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.12);
+    min-height: 80px;
+}
+
+.project-meta {
+    padding: 1rem 1.2rem;
+}
+
+.project-meta h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+
+.project-meta p {
+    font-size: 0.82rem;
+    opacity: 0.6;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.tags span {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+}
+
+/* ========================================
+   CARD 3 — SKILLS + ABOUT
+   ======================================== */
+/* Skills — Two columns */
+.skills-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.skills-col-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.2rem;
+    opacity: 0.5;
+}
+
+/* Hard skill items */
+.skill-item {
+    padding: 0.8rem 1rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s var(--ease);
+}
+
+.skill-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.skill-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skill-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.skill-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.7rem;
+    border-radius: var(--radius-pill);
+    letter-spacing: 0.02em;
+}
+
+.tag-solid {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+}
+
+.tag-mid {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tag-new {
+    background: transparent;
+    color: var(--white);
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+}
+
+/* Soft skill items */
+.soft-skill {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s var(--ease);
+}
+
+.soft-skill:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.soft-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.soft-skill strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.soft-skill p {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* About block */
+.about-block {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    align-items: start;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.about-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: var(--radius-sm);
+}
+
+.about-text p {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.about-stats {
+    display: flex;
+    gap: 2rem;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-num {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.stat-lbl {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    opacity: 0.5;
+}
+
+/* ========================================
+   CARD 4 — CONTACT
+   ======================================== */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+.contact-big-text {
+    font-size: 1.15rem;
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    text-decoration: none;
+    color: var(--white);
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s var(--ease);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-link-item:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateX(5px);
+}
+
+.contact-link-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+/* Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-sm);
+    padding: 0.9rem 1.1rem;
+    color: var(--white);
+    font-size: 0.92rem;
+    font-family: inherit;
+    transition: all 0.3s var(--ease);
+    outline: none;
+    resize: vertical;
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-send {
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+/* Footer in card 4 */
+.footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: 0.8rem;
+    opacity: 0.4;
+}
+
+/* ========================================
+   REVEAL ANIMATIONS
+   ======================================== */
+.reveal-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+
+.reveal-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 1024px) {
+    .projects-bento {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+    }
+
+    .project-large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Nav mobile */
+    .nav-toggle {
+        display: flex;
+    }
+
+    .cv-button {
+        top: auto;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .navbar {
+        top: 0.8rem;
+        left: 0.8rem;
+        right: 0.8rem;
+        transform: none;
+        padding: 0.5rem 0.5rem 0.5rem 1.2rem;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(17, 17, 17, 0.97);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.4s var(--ease);
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .nav-links .nav-link {
+        font-size: 1.3rem;
+        padding: 0.8rem 2rem;
+    }
+
+    /* Cards */
+    .card-inner {
+        padding: 5rem 1.5rem 2rem;
+    }
+
+    .card-number {
+        font-size: 6rem;
+        right: -1rem;
+        bottom: -0.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2.8rem, 12vw, 5rem);
+    }
+
+    .section-heading {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    /* Projects */
+    .projects-bento {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .project-large,
+    .project-wide {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    .project-img {
+        min-height: 120px;
+    }
+
+    /* Skills */
+    .skills-columns {
+        grid-template-columns: 1fr;
+    }
+
+    /* About */
+    .about-block {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+
+    .about-photo {
+        max-width: 150px;
+    }
+
+    .about-stats {
+        gap: 1.5rem;
+    }
+
+    /* Contact */
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Buttons */
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .stat-num {
+        font-size: 1.4rem;
+    }
+}

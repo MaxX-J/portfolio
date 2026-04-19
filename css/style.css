@@ -819,10 +819,20 @@ body {
         overflow: hidden !important;
     }
 
+    /* card-1 remonte pour couvrir la zone sombre derrière la navbar */
+    .card-1 {
+        margin-top: -5rem !important;
+    }
+
     .card-inner {
         padding: 2rem 1.5rem 2rem;
         width: 100%;
         box-sizing: border-box;
+    }
+
+    /* compense la remontée de card-1 pour ne pas cacher le contenu */
+    .card-1 .card-inner {
+        padding-top: 5rem;
     }
 
     .card-number {

@@ -125,13 +125,7 @@
         .carousel-btn.prev { left: 1rem; }
         .carousel-btn.next { right: 1rem; }
         .carousel-indicators {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-            z-index: 10;
+            display: none;
         }
         .dot-ind {
             width: 8px;
@@ -146,6 +140,15 @@
         @media (max-width: 768px) {
             .project-page {
                 padding-top: 6rem;
+            }
+            .carousel-indicators {
+                display: flex;
+                position: absolute;
+                bottom: 1rem;
+                left: 50%;
+                transform: translateX(-50%);
+                gap: 0.5rem;
+                z-index: 10;
             }
             .carousel-btn {
                 display: none !important;

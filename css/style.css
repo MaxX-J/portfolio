@@ -736,7 +736,11 @@ body {
     }
 
     .nav-container {
-        justify-content: center;
+        justify-content: flex-start;
+    }
+
+    .nav-logo {
+        font-size: 1rem;
     }
 
     .cv-button {
@@ -800,9 +804,7 @@ body {
     }
 
     .card-number {
-        font-size: 3.5rem;
-        right: -0.2rem;
-        bottom: 0rem;
+        display: none !important;
     }
 
     .hero-title {

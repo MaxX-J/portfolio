@@ -124,9 +124,43 @@
         }
         .carousel-btn.prev { left: 1rem; }
         .carousel-btn.next { right: 1rem; }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .dot-ind {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            transition: 0.3s;
+        }
+        .dot-ind.active {
+            background: white;
+        }
         @media (max-width: 768px) {
             .project-page {
                 padding-top: 6rem;
+            }
+            .carousel-btn {
+                display: none !important;
+            }
+            .carousel-inner {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .carousel-inner::-webkit-scrollbar {
+                display: none;
+            }
+            .carousel-inner img {
+                scroll-snap-align: center;
             }
         }
     </style>
@@ -137,7 +171,7 @@
             <a href="index.html" class="nav-logo">Maxens<span class="dot" style="color: var(--purple-1);">.</span></a>
         </div>
     </nav>
-    <a href="assets/docs/cv-maxens-sevilla.pdf" class="cv-button" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
+    <a href="assets/docs/cv-maxens-sevilla.pdf" class="cv-button hide-on-mobile" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
 
     <main class="project-page">
         <a href="index.html#projets" class="back-btn">← Retour aux projets</a>
@@ -164,25 +198,45 @@
                     <img src="assets/img/Trench_hero_5.png" alt="Trench Hero Characters">
                     <img src="assets/img/Trench_hero_1.png" alt="Trench Hero Title Screen">
                 </div>
+                <div class="carousel-indicators">
+                    <span class="dot-ind active"></span>
+                    <span class="dot-ind"></span>
+                    <span class="dot-ind"></span>
+                    <span class="dot-ind"></span>
+                </div>
                 <button class="carousel-btn prev" onclick="moveCarousel(-1, this)">&#10094;</button>
                 <button class="carousel-btn next" onclick="moveCarousel(1, this)">&#10095;</button>
             </div>
         </div>
     </main>
     <script>
+        document.querySelectorAll('.carousel').forEach(carousel => {
+            const inner = carousel.querySelector('.carousel-inner');
+            const dots = carousel.querySelectorAll('.dot-ind');
+            
+            // Sync dots on scroll
+            inner.addEventListener('scroll', () => {
+                const index = Math.round(inner.scrollLeft / inner.clientWidth);
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            });
+        });
+
         function moveCarousel(direction, btn) {
             const carousel = btn.closest('.carousel');
             const inner = carousel.querySelector('.carousel-inner');
+            
+            let index = Math.round(inner.scrollLeft / inner.clientWidth);
+            index += direction;
+            
             const totalItems = inner.querySelectorAll('img').length;
+            if(index >= totalItems) index = 0;
+            if(index < 0) index = totalItems - 1;
             
-            let currentIndex = parseInt(carousel.dataset.index || '0');
-            currentIndex += direction;
-            
-            if(currentIndex >= totalItems) currentIndex = 0;
-            if(currentIndex < 0) currentIndex = totalItems - 1;
-            
-            carousel.dataset.index = currentIndex;
-            inner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            // smooth scroll to new index
+            inner.scrollTo({
+                left: index * inner.clientWidth,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>

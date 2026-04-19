@@ -740,14 +740,14 @@ body {
 
 @media (max-width: 768px) {
 
-    /* Le body prend la couleur de la card-1 pour que la navbar
-       s'intègre visuellement dans la première section */
+    /* Fond du body = couleur dernière card pour eviter bande en bas
+       html = couleur card-1 pour iOS overscroll vers le haut */
     html {
-        background: var(--purple-4); /* couleur dernière card — fix iOS overscroll bas */
+        background: var(--purple-1);
     }
 
     body {
-        background: var(--purple-1); /* couleur card-1 pour la navbar */
+        background: var(--purple-4);
     }
 
     /* Nav mobile — en haut de page, disparaît au scroll */

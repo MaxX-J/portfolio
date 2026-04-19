@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Je Filme Ma Formation | Maxens Sevilla</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
         body {
             background: var(--purple-4);
@@ -95,7 +95,7 @@
             <a href="index.html" class="nav-logo">Maxens<span class="dot" style="color: var(--purple-1);">.</span></a>
         </div>
     </nav>
-    <a href="cv-maxens-sevilla.pdf" class="cv-button" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
+    <a href="assets/docs/cv-maxens-sevilla.pdf" class="cv-button" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
 
     <main class="project-page">
         <a href="index.html#projets" class="back-btn">← Retour aux projets</a>
@@ -117,7 +117,9 @@
             </div>
             
             <div class="project-image">
-                <video src="je_film_ma_formation.mp4" controls autoplay muted loop playsinline></video>
+                <video controls autoplay muted loop playsinline>
+                    <source src="assets/video/je_film_ma_formation.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
     </main>

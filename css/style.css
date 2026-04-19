@@ -367,11 +367,13 @@ body {
    ======================================== */
 .section-heading {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 5vw, 4rem);
     font-weight: 800;
     letter-spacing: -0.03em;
     margin-bottom: 2rem;
     line-height: 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .projects-bento {
@@ -819,7 +821,7 @@ body {
     }
 
     .section-heading {
-        font-size: clamp(2rem, 8vw, 3rem);
+        font-size: clamp(1.4rem, 8vw, 3rem);
     }
 
     /* Projects */

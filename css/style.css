@@ -740,6 +740,12 @@ body {
 
 @media (max-width: 768px) {
 
+    /* Le body prend la couleur de la card-1 pour que la navbar
+       s'intègre visuellement dans la première section */
+    body {
+        background: var(--purple-1);
+    }
+
     /* Nav mobile — en haut de page, disparaît au scroll */
     .nav-toggle, .nav-links {
         display: none !important;

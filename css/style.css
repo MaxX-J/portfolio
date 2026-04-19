@@ -778,8 +778,11 @@ body {
 
     /* Cards */
     .card {
-        position: relative;
-        min-height: auto;
+        position: relative !important;
+        top: auto !important;
+        min-height: max-content !important;
+        display: block !important;
+        overflow: visible !important;
     }
 
     .card-inner {

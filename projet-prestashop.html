@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrestaShop | Maxens Sevilla</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: var(--purple-3);
+            min-height: 100vh;
+        }
+        .project-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            color: var(--white);
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 3rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-pill);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s var(--ease);
+        }
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+        .project-header {
+            margin-bottom: 3rem;
+        }
+        .project-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .project-meta-info {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+        .project-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .project-text {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .project-text ul {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            padding-left: 1.5rem;
+        }
+        .project-text p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        .project-text p:last-child {
+            margin-bottom: 0;
+        }
+        .carousel {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0,0,0,0.2);
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            width: 100%;
+        }
+        .carousel-inner img {
+            flex: 0 0 100%;
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            z-index: 10;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            padding: 0;
+            line-height: 1;
+        }
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--purple-4);
+        }
+        .carousel-btn.prev { left: 1rem; }
+        .carousel-btn.next { right: 1rem; }
+        .carousel-indicators {
+            display: flex;
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .dot-ind {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            transition: 0.3s;
+        }
+        .dot-ind.active {
+            background: white;
+        }
+        @media (max-width: 768px) {
+            .project-page {
+                padding-top: 1rem;
+            }
+            .carousel-btn {
+                display: none !important;
+            }
+            .carousel-inner {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            .carousel-inner::-webkit-scrollbar {
+                display: none;
+            }
+            .carousel-inner img {
+                scroll-snap-align: center;
+            }
+        }
+        
+        .swipe-hint {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .swipe-hint {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                opacity: 0.7;
+            }
+            .swipe-icon {
+                font-size: 1.2rem;
+                animation: swipeAnim 2s infinite;
+            }
+        }
+        @keyframes swipeAnim {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" id="navbar" style="backdrop-filter: blur(20px);">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Maxens<span class="dot" style="color: var(--purple-1);">.</span></a>
+        </div>
+    </nav>
+    <a href="assets/docs/cv-maxens-sevilla.pdf" class="cv-button" download="CV_Maxens_Sevilla.pdf">Mon CV</a>
+
+    <main class="project-page">
+        <a href="index.html#projets" class="back-btn">← Retour aux projets</a>
+        
+        <div class="project-header">
+            <h1 class="project-title">Boutique PrestaShop</h1>
+            <div class="project-meta-info">
+                <span>E-Commerce</span>
+                <span>PrestaShop CMS</span>
+            </div>
+        </div>
+
+        <div class="project-body">
+            <div class="project-text">
+                <p>Dans le cadre d'un projet de e-commerce, j’ai réalisé une <strong>mise en pratique complète sur PrestaShop</strong>, me permettant de configurer et personnaliser une boutique en ligne de A à Z.</p>
+                <p>J'ai notamment travaillé sur :</p>
+                <ul>
+                    <li>Le <strong>catalogue et les produits</strong> : création de plus de 10 articles (produits standards et avec déclinaisons), organisés en catégories (niveaux 1 et 2), et structurés à l'aide d'attributs et de caractéristiques pour les infos produits.</li>
+                    <li>Les <strong>promotions et réductions</strong> : implémentation de promotions et création d'un code promo actif sur la boutique.</li>
+                    <li>Les <strong>moyens de paiement</strong> : configuration des paiements par virement bancaire et par chèque.</li>
+                    <li>La gestion des <strong>transporteurs</strong> : création d'une option de livraison "Retrait magasin".</li>
+                    <li>Le <strong>design</strong> : mise en place d'un thème enfant et personnalisation graphique libre (couleurs, typographies, images) pour offrir une expérience unique et professionnelle.</li>
+                </ul>
+                <p>Ce projet s'est avéré très instructif pour comprendre le fonctionnement global du CMS, l’architecture d'un site e-commerce et la personnalisation avancée d’un thème via l'héritage (thème enfant).</p>
+            </div>
+            
+            <div class="carousel" data-index="0">
+                <div class="carousel-inner" id="carouselInner">
+                    <img src="assets/img/Prestashop1.png" alt="Prestashop Accueil">
+                    <img src="assets/img/prestashop2.png" alt="Prestashop Catalogue">
+                    <img src="assets/img/prestashop3.png" alt="Prestashop Produit">
+                </div>
+                <!-- Controls desktop -->
+                <button class="carousel-btn prev" onclick="moveCarousel(-1, this)" aria-label="Image précédente">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveCarousel(1, this)" aria-label="Image suivante">&#10095;</button>
+                
+                <!-- Dots indicators (mobile & desktop) -->
+                <div class="carousel-indicators">
+                    <span class="dot-ind active"></span>
+                    <span class="dot-ind"></span>
+                    <span class="dot-ind"></span>
+                </div>
+            </div>
+            
+            <div class="swipe-hint">
+                <span class="swipe-icon">👈</span>
+                <span>Balayez pour naviguer</span>
+                <span class="swipe-icon" style="animation-delay: -1s;">👉</span>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.querySelectorAll('.carousel').forEach(carousel => {
+            const inner = carousel.querySelector('.carousel-inner');
+            const dots = carousel.querySelectorAll('.dot-ind');
+            
+            // Sync dots on scroll (for mobile)
+            let isScrolling;
+            inner.addEventListener('scroll', () => {
+                window.clearTimeout(isScrolling);
+                isScrolling = setTimeout(() => {
+                    const index = Math.round(inner.scrollLeft / inner.clientWidth);
+                    dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+                    carousel.dataset.index = index;
+                }, 50);
+            });
+        });
+
+        function moveCarousel(direction, btn) {
+            const carousel = btn.closest('.carousel');
+            const inner = carousel.querySelector('.carousel-inner');
+            const isMobile = window.innerWidth <= 768;
+            const totalItems = inner.querySelectorAll('img').length;
+            const dots = carousel.querySelectorAll('.dot-ind');
+            
+            if (isMobile) {
+                let index = Math.round(inner.scrollLeft / inner.clientWidth);
+                index += direction;
+                if(index >= totalItems) index = 0;
+                if(index < 0) index = totalItems - 1;
+                inner.scrollTo({ left: index * inner.clientWidth, behavior: 'smooth' });
+            } else {
+                let index = parseInt(carousel.dataset.index || '0');
+                index += direction;
+                if(index >= totalItems) index = 0;
+                if(index < 0) index = totalItems - 1;
+                carousel.dataset.index = index;
+                inner.style.transform = `translateX(-${index * 100}%)`;
+                
+                // Update dots immediately for desktop
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            }
+        }
+    </script>
+</body>
+</html>
